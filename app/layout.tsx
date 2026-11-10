@@ -1,9 +1,13 @@
+
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'], weight: ['400', '500', '700', '800', '900'] })
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '700', '800', '900'],
+})
 
 export const metadata: Metadata = {
   title: 'Download Atomic Habits PDF Edition — James Clear',
@@ -42,17 +46,31 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.className} bg-background`}>
       <head>
-        {/* OGAds content locker (book4u) */}
-        <script type="text/javascript" id="ogjs" src="https://book4u.gt.tc/cl/js/o4mqod" />
+        {/* OGAds Content Locker */}
+        <script
+          type="text/javascript"
+          id="ogjs"
+          src="https://trkoffer.net/cl/js/o4mqod"
+        />
         <script
           type="text/javascript"
           dangerouslySetInnerHTML={{
-            __html: `function CPABuildComplete(){window.location.href='/files/Atomic-Habits.pdf';}function xfComplete(){CPABuildComplete();}`,
+            __html: `
+              function CPABuildComplete() {
+                window.location.href = '/files/Atomic-Habits.pdf';
+              }
+
+              function xfComplete() {
+                CPABuildComplete();
+              }
+            `,
           }}
         />
       </head>
+
       <body className="antialiased">
         {children}
+
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
