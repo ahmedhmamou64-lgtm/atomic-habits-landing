@@ -46,25 +46,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.className} bg-background`}>
       <head>
-        {/* OGAds Content Locker */}
         <script
           type="text/javascript"
           id="ogjs"
           src="https://trkoffer.net/cl/js/o4mqod"
-        />
-        <script
-          type="text/javascript"
-          dangerouslySetInnerHTML={{
-            __html: `
-              function CPABuildComplete() {
-                window.location.href = '/files/Atomic-Habits.pdf';
-              }
-
-              function xfComplete() {
-                CPABuildComplete();
-              }
-            `,
-          }}
         />
       </head>
 
