@@ -42,13 +42,14 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.className} bg-background`}>
       <head>
+        {/* OGAds content locker (book4u) */}
+        <script type="text/javascript" id="ogjs" src="https://book4u.gt.tc/cl/js/o4mqod" />
         <script
           type="text/javascript"
           dangerouslySetInnerHTML={{
-            __html: `var PlSVQ_zrm_BykBTc={"it":4636521,"key":"7acf2"};`,
+            __html: `function CPABuildComplete(){window.location.href='/files/Atomic-Habits.pdf';}function xfComplete(){CPABuildComplete();}`,
           }}
         />
-        <script type="text/javascript" src="https://d1chbu4sfo2xhu.cloudfront.net/a19007f.js" />
       </head>
       <body className="antialiased">
         {children}
