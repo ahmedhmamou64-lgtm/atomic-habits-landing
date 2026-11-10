@@ -4,48 +4,9 @@
 import { Download } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
-declare global {
-  interface Window {
-    _yk?: () => void
-    _CJ?: () => void
-    CPABuildLock?: () => void
-    xfLock?: () => void
-    xfContentLocker?: {
-      openLocker?: () => void
-    }
-  }
-}
-
 export function CtaSection() {
   const handleClick = () => {
-    if (typeof window === 'undefined') return
-
-    if (typeof window._yk === 'function') {
-      window._yk()
-      return
-    }
-
-    if (typeof window.CPABuildLock === 'function') {
-      window.CPABuildLock()
-      return
-    }
-
-    if (typeof window.xfLock === 'function') {
-      window.xfLock()
-      return
-    }
-
-    if (typeof window.xfContentLocker?.openLocker === 'function') {
-      window.xfContentLocker.openLocker()
-      return
-    }
-
-    if (typeof window._CJ === 'function') {
-      window._CJ()
-      return
-    }
-
-    alert('Locker is loading. Please refresh the page.')
+    window.location.href = 'https://trkoffer.net/cl/i/o4mqod'
   }
 
   return (
