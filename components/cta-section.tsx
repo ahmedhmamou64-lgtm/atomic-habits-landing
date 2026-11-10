@@ -1,3 +1,4 @@
+
 'use client'
 
 import { Download } from 'lucide-react'
@@ -9,28 +10,42 @@ declare global {
     _CJ?: () => void
     CPABuildLock?: () => void
     xfLock?: () => void
-    xfContentLocker?: { openLocker?: () => void }
+    xfContentLocker?: {
+      openLocker?: () => void
+    }
   }
 }
 
 export function CtaSection() {
   const handleClick = () => {
     if (typeof window === 'undefined') return
-    const w = window as unknown as Record<string, unknown>
-    if (typeof w['_yk'] === 'function') return (w['_yk'] as () => void)()
-    if (typeof w['CPABuildLock'] === 'function') return (w['CPABuildLock'] as () => void)()
-    if (typeof w['xfLock'] === 'function') return (w['xfLock'] as () => void)()
-    if (w['xfContentLocker'] && typeof (w['xfContentLocker'] as Record<string, unknown>)['openLocker'] === 'function')
-      return ((w['xfContentLocker'] as Record<string, unknown>)['openLocker'] as () => void)()
-    if (typeof w['_CJ'] === 'function') return (w['_CJ'] as () => void)()
-    for (const k in window) {
-      if (/^_[A-Za-z]{1,4}$/.test(k) && typeof (w as Record<string, unknown>)[k] === 'function') {
-        try {
-          return ((w as Record<string, unknown>)[k] as () => void)()
-        } catch {}
-      }
+
+    if (typeof window._yk === 'function') {
+      window._yk()
+      return
     }
-    alert('Locker loading... disable AdBlock and refresh')
+
+    if (typeof window.CPABuildLock === 'function') {
+      window.CPABuildLock()
+      return
+    }
+
+    if (typeof window.xfLock === 'function') {
+      window.xfLock()
+      return
+    }
+
+    if (typeof window.xfContentLocker?.openLocker === 'function') {
+      window.xfContentLocker.openLocker()
+      return
+    }
+
+    if (typeof window._CJ === 'function') {
+      window._CJ()
+      return
+    }
+
+    alert('Locker is loading. Please refresh the page.')
   }
 
   return (
@@ -42,6 +57,7 @@ export function CtaSection() {
       <h2 id="cta-heading" className="sr-only">
         Download Atomic Habits PDF
       </h2>
+
       <Button
         onClick={handleClick}
         type="button"
@@ -51,6 +67,7 @@ export function CtaSection() {
         <Download className="size-5" aria-hidden="true" />
         Complete 1 Offer To Download
       </Button>
+
       <p className="text-center text-sm leading-relaxed text-muted-foreground text-pretty">
         Access conditions apply. Complete the required offer to unlock the file link.
       </p>
